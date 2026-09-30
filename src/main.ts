@@ -118,5 +118,10 @@ async function startServer() {
   }
 }
 
-// Start the server
-startServer();
+// Start the server only in local non-Vercel environment
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  startServer();
+}
+
+export default app;
+

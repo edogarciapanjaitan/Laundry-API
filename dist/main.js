@@ -94,5 +94,8 @@ async function startServer() {
         process.exit(1); // Exit if DB connection fails
     }
 }
-// Start the server
-startServer();
+// Start the server only in local non-Vercel environment
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    startServer();
+}
+exports.default = app;
